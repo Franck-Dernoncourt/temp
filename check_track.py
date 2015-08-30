@@ -89,7 +89,7 @@ class TrackChecker():
 					frame_label = track_utter['frame_label']
 					for slot in frame_label:
 						if topic not in self.tagsets:
-							print("In dialog {0}, utterance {1}, frame_label is present in the track whereas the utterance's topic ({2}) of the utterance is not in the ontology.".format(session_id, log_utter['utter_index'], topic))
+							self.add_error((session_id, 'utterance', log_utter['utter_index'], slot), "frame_label is present in the track whereas the utterance's topic ({2}) of the utterance is not in the ontology.".format(session_id, log_utter['utter_index'], topic))
 							continue
 						# check slots in frame labels
 						if slot not in self.tagsets[topic]:
